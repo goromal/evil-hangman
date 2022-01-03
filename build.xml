@@ -1,0 +1,27 @@
+<?xml version = "1.0"?>
+<project name = "evil-hangman" basedir = "." default = "build">
+   <property name = "src.dir" value = "hangman"/>
+   <property name = "build.dir" value = "${src.dir}"/>
+   <property name = "name" value = "evil-hangman"/>
+
+   <path id = "master-classpath">
+      <pathelement path = "${build.dir}"/>
+   </path>
+
+   <target name = "build" description = "Compile source tree java files">
+      <mkdir dir = "${build.dir}"/>
+      
+      <javac destdir = "${build.dir}" source = "1.7" target = "1.7">
+         <src path = "${src.dir}"/>
+         <classpath refid = "master-classpath"/>
+      </javac>
+   </target>
+ 
+   <target name = "clean" description = "Clean output directories">
+      <delete>
+         <fileset dir = "${build.dir}">
+            <include name = "**/*.class"/>
+         </fileset>
+      </delete>
+   </target>
+</project>
